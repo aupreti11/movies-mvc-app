@@ -42,6 +42,7 @@
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">Sign In</button>
 		<button type="reset" class="btn btn-success">Clear All</button>
+		<a href="getPassword"><button type="button" class="btn btn-info">Forget Password</button></a>
 	</div>
 	</form>
 	</div>

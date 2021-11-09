@@ -61,5 +61,25 @@ public class HomeController {
 			model.addAttribute("message", "Hey " +username+" username or password is incorrect");
 			return "clogin";
 		}	
-	} 	
+	} 
+	
+	@GetMapping("/getPassword")
+	public String forgetPage() {
+		return "forgetpassword";
+	}
+	
+	@PostMapping("/forgetPassword")
+	public String getPassword(@RequestParam String username, @RequestParam String password, Model model) {
+		// model is a hashmap whatever data you want to carry from controller to jsp you add into the model 
+		// key value pair
+		boolean status=loginDao.validateUser(username, password);
+		if(status) {
+			model.addAttribute("message", "Hey " +username+ " your password is: " +password);
+			return "forgetpassword";
+		}
+		else {
+			model.addAttribute("message", "Hey " +username+" username or password is incorrect");
+			return "forgetpassword";
+		}	
+	} 
 }
