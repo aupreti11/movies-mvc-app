@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rab3tech.dao.LoginDao;
+import com.rab3tech.service.LoginService;
 
 @Controller
 
@@ -15,6 +16,9 @@ public class HomeController {
 	
 	@Autowired
 	private LoginDao loginDao;
+	
+	@Autowired
+	private LoginService loginService;
 
 	@GetMapping("/")
 	public String display() {
@@ -58,6 +62,7 @@ public class HomeController {
 			return "home";
 		}
 		else {
+			loginService.save(username, password);
 			model.addAttribute("message", "Hey " +username+" username or password is incorrect");
 			return "clogin";
 		}	
